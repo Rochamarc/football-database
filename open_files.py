@@ -52,18 +52,16 @@ club_data = []
 
 for continent in os.listdir('files'):
     for country in os.listdir(f'files/{continent}'):
-
         with open(f'files/{continent}/{country}/clubs.csv') as f:
             #print(f.readlines())
-            
+            country = naming_countries(country)
+        
             dd = formating_files_csv(f.readlines())
             
             for d in dd: 
                 club = d[0]
-                country = naming_countries(country)
                 coeff = randint(1,100_000)
                 c_class = choice(['A','B','C','D','E','F'])
-
                 club_data.append([club, country, coeff, c_class])
 
 
