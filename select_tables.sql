@@ -1,0 +1,1 @@
+SELECT country, COUNT(*) FROM clubs GROUP BY country ORDER BY COUNT(*); --selecionando e organizando 
