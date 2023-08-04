@@ -50,9 +50,9 @@ def insert_clubs_db(clubs: list) -> None:
 
 club_data = []
 
-for continent in os.listdir('files'):
-    for country in os.listdir(f'files/{continent}'):
-        with open(f'files/{continent}/{country}/clubs.csv') as f:
+for continent in os.listdir('files/clubs'):
+    for country in os.listdir(f'files/clubs/{continent}'):
+        with open(f'files/clubs/{continent}/{country}/clubs.csv') as f:
             #print(f.readlines())
             country = naming_countries(country)
         
