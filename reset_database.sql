@@ -1,0 +1,3 @@
+DROP DATABASE football;
+
+CREATE DATABASE football;
