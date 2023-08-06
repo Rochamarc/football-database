@@ -31,11 +31,25 @@ CREATE TABLE players (
     nationality VARCHAR(100) NOT NULL, 
     age INT(2) NOT NULL, 
     position VARCHAR(2) NOT NULL, 
-    height FLOAT(2,2),  
-    weight FLOAT(2,2),  
+    height FLOAT,  
+    weight FLOAT,  
     foot VARCHAR(5), 
     retired CHAR(1)
 );
+
+CREATE TABLE players_contract(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    value INT,
+    salary INT NOT NULL,
+    termination_fine INT,
+    id_club INT,
+    id_player INT,
+    FOREIGN KEY (id_club)
+    REFERENCES clubs(id),
+    FOREIGN key (id_player) 
+    REFERENCES players(id)  
+);
+
 
 -- COACHES
 CREATE TABLE coaches (
@@ -44,9 +58,23 @@ CREATE TABLE coaches (
     nationality VARCHAR(100) NOT NULL,
     age INT NOT NULL,
     formation VARCHAR(10),
-    play_mode VARCHAR(50) NOT NULL,
-    current_club VARCHAR(100)
+    play_mode VARCHAR(50) NOT NULL
 );
+
+
+CREATE TABLE coaches_contract(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    value INT,
+    salary INT NOT NULL,
+    termination_fine INT,
+    id_club INT,
+    id_coach INT,
+    FOREIGN KEY (id_club)
+    REFERENCES clubs(id),
+    FOREIGN key (id_coach) 
+    REFERENCES coaches(id)  
+);
+
 
 -- STADIUMS
 
@@ -81,3 +109,5 @@ INSERT INTO players (name, nationality, age, position, retired) VALUES ('Fábio'
 INSERT INTO stadiums (name, location, capacity) VALUES ('Maracanã', 'RJ', 100000);
 INSERT INTO stadiums (name, location, capacity) VALUES ('Engenhão', 'RJ', 50000);
 INSERT INTO stadiums (name, location, capacity) VALUES ('Mineirão', 'MG', 100000);
+
+INSERT INTO coach_contracts(salary, id_club, id_coach) VALUES (10000, 1263, 1);
