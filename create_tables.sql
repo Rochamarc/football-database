@@ -18,13 +18,6 @@ CREATE TABLE clubs (
 );
 
 -- PLAYERS
-/*
-
-Foram removidos os campos que remetem a coisas extremamente variaveis que passarão a
-ser outras tabelas ou outros campos de outras tabelas 
- 
-*/
-
 CREATE TABLE players ( 
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL, 
@@ -37,6 +30,7 @@ CREATE TABLE players (
     retired CHAR(1)
 );
 
+-- PLAYERS_CONTRACT
 CREATE TABLE players_contract(
     id INT AUTO_INCREMENT PRIMARY KEY,
     value INT,
@@ -50,7 +44,6 @@ CREATE TABLE players_contract(
     REFERENCES players(id)  
 );
 
-
 -- COACHES
 CREATE TABLE coaches (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -61,7 +54,7 @@ CREATE TABLE coaches (
     play_mode VARCHAR(50) NOT NULL
 );
 
-
+-- COACHES_CONTRACT
 CREATE TABLE coaches_contract(
     id INT AUTO_INCREMENT PRIMARY KEY,
     value INT,
@@ -77,7 +70,6 @@ CREATE TABLE coaches_contract(
 
 
 -- STADIUMS
-
 CREATE TABLE stadiums ( 
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -90,7 +82,6 @@ CREATE TABLE stadiums (
 
 
 /* INSERT EXAMPLES */
-
 -- CLUBS
 INSERT INTO clubs(name, country, coeff, class) VALUES ('Fluminense FC', 'Brasil', 1000, 'A');
 INSERT INTO clubs(name, country, coeff, class) VALUES ('River Plate', 'Argentina', 1000, 'A');
