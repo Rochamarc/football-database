@@ -4,6 +4,13 @@ USE football;
 
 /* CREATE TABLES */
 
+CREATE TABLE confederations (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    continent VARCHAR(100) NOT NULL
+);
+
+
 -- CLUBS
 CREATE TABLE clubs (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -14,7 +21,10 @@ CREATE TABLE clubs (
     class CHAR(1),
     formation VARCHAR(10),
     total_budget INT,
-    salary_budget INT
+    salary_budget INT,
+    id_confederation INT,
+    FOREIGN KEY (id_confederation)
+    REFERENCES confederations(id)
 );
 
 -- PLAYERS
@@ -33,6 +43,8 @@ CREATE TABLE players (
 -- PLAYERS_CONTRACT
 CREATE TABLE players_contract(
     id INT AUTO_INCREMENT PRIMARY KEY,
+    start_date DATE,
+    end_date DATE,
     value INT,
     salary INT NOT NULL,
     termination_fine INT,
@@ -79,6 +91,11 @@ CREATE TABLE stadiums (
     capacity INT,
     club_owner VARCHAR(100)
 );
+
+
+-- CONFEDERATION
+
+
 
 
 /* INSERT EXAMPLES */
