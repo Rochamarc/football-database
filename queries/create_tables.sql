@@ -40,6 +40,15 @@ CREATE TABLE players (
     retired CHAR(1)
 );
 
+CREATE TABLE players_overall (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    season VARCHAR(5) NOT NULL,
+    overall INT NOT NULL,
+    id_player INT,
+    FOREIGN KEY(id_player)
+    REFERENCES players(id)
+);
+
 -- PLAYERS_CONTRACT
 CREATE TABLE players_contract(
     id INT AUTO_INCREMENT PRIMARY KEY,
