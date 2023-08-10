@@ -3,7 +3,9 @@
 #### Conmebol
 ---
     Club class
-    A, B, C, D, E
+    Brasil -> A, B, C
+    Aregentina -> A, B, C, D
+    Rest -> C, D, E
 
 #### Uefa
 ---
