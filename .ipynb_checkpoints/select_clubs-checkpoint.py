@@ -1,8 +1,6 @@
 import mysql.connector 
 import pandas as pd 
 
-
-query = "SELECT clubs.name, clubs.country FROM clubs WHERE clubs.country='Brazil'"
 query = 'SELECT clubs.name, clubs.country, clubs.class, confederations.name FROM clubs INNER JOIN confederations  ON id_confederation = confederations.id'
 
 
@@ -19,5 +17,6 @@ cursor = conn.cursor()
 cursor.execute(query)
 
 select = cursor.fetchall()
+
 
 print(pd.DataFrame(select, columns=['Name', 'Country', 'Class', 'Confederation']))
