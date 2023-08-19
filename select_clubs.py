@@ -1,8 +1,7 @@
 import mysql.connector
 from pprint import pprint 
 
-query = 'SELECT * FROM clubs'
-
+query = "SELECT clubs.name, clubs.country FROM clubs WHERE clubs.country='Brazil'"
 
 database_config = {
     'user': 'tournament_user',
@@ -17,4 +16,6 @@ cursor = conn.cursor()
 cursor.execute(query)
 
 select = cursor.fetchall()
-pprint(select)
+
+for sel in select: 
+    print(sel)
