@@ -24,4 +24,4 @@ def format_name(first_names: list, last_names: list) -> str:
     return "{} {}".format(first_name[0], last_name[0])
     
 def get_player_age():
-    return randint(17,34)
+    return randint(1889,2006)
