@@ -1,8 +1,8 @@
 import mysql.connector
-from pprint import pprint 
+
 
 select_brazilian_clubs_query = "SELECT clubs.id, clubs.name, clubs.country FROM clubs WHERE clubs.country='Brazil'"
-select_brazilian_argetinian_player_query = "SELECT players.id, players.name, players.nationality, players.position, players.age FROM players WHERE players.nationality='Brazil' or 'Argentina'"
+select_brazilian_argetinian_player_query = "SELECT players.id, players.name, players.nationality, players.position, players.birth_year FROM players WHERE players.nationality='Brazil' or 'Argentina'"
 
 # YYYY-MM-DD
 # create a two years contract
