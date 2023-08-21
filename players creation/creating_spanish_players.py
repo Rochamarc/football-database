@@ -37,13 +37,13 @@ players = []
 for _ in range(1000000):
     name = format_name(first_names, last_names)
     nationality = choice(['Spain', 'Argentina', 'Uruguay', 'Chile', 'Paraguay', 'Colombia', 'Mexico'])
-    age = get_player_age()
+    birth_year = get_player_age()
     position = get_player_position()
     height = get_player_height(position)
     weight = get_player_wight()
     foot = get_player_foot()
 
-    players.append([ name, nationality, age, position, height, weight, foot ])
+    players.append([ name, nationality, position, height, weight, foot,  birth_year ])
     
 
 database_config['database'] = 'football'
