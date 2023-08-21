@@ -19,7 +19,7 @@ first_name_query = "SELECT first_name.value FROM first_name INNER JOIN region ON
 last_name_query = "SELECT last_name.value FROM last_name INNER JOIN region ON region_id = id_region WHERE region.language='Portuguese';"
 
 
-first_names = [] # list de sets, com um valor somente dentro
+first_names = [] 
 last_names = []
 
 conn = mysql.connector.connect(**database_config)
