@@ -58,10 +58,10 @@ CREATE TABLE players_contract(
     salary INT NOT NULL,
     termination_fine INT,
     id_club INT,
-    id_player INT,
-    FOREIGN KEY (id_club)
+    FOREIGN KEY (id_club) 
     REFERENCES clubs(id),
-    FOREIGN key (id_player) 
+    id_player INT,
+    FOREIGN KEY (id_player) 
     REFERENCES players(id)  
 );
 
@@ -70,7 +70,7 @@ CREATE TABLE coaches (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     nationality VARCHAR(100) NOT NULL,
-    age INT NOT NULL,
+    birth_year INT(4) NOT NULL,
     formation VARCHAR(10),
     play_mode VARCHAR(50) NOT NULL
 );
@@ -84,9 +84,9 @@ CREATE TABLE coaches_contract(
     id_club INT,
     id_coach INT,
     FOREIGN KEY (id_club)
-    REFERENCES clubs(id),
+        REFERENCES clubs(id),
     FOREIGN key (id_coach) 
-    REFERENCES coaches(id)  
+        REFERENCES coaches(id)  
 );
 
 
