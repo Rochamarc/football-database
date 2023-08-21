@@ -1,0 +1,1 @@
+SELECT coaches.name, coaches.formation, coaches.play_mode, coaches_contract.salary, clubs.name FROM coaches INNER JOIN coaches_contract INNER JOIN clubs ON coaches.id = coaches_contract.id_coach AND clubs.id = coaches_contract.id_club;

@@ -32,7 +32,7 @@ CREATE TABLE players (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL, 
     nationality VARCHAR(100) NOT NULL, 
-    age INT(2) NOT NULL, 
+    birth_year INT(4) NOT NULL, 
     position VARCHAR(2) NOT NULL, 
     height FLOAT,  
     weight FLOAT,  
