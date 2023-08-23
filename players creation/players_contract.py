@@ -2,7 +2,7 @@ import mysql.connector
 
 
 select_brazilian_clubs_query = "SELECT clubs.id, clubs.name, clubs.country FROM clubs WHERE clubs.country='Brazil'"
-select_brazilian_argetinian_player_query = "SELECT players.id, players.name, players.nationality, players.position, players.birth_year FROM players WHERE players.nationality='Brazil' or 'Argentina'"
+select_brazilian_argetinian_player_query = "SELECT players.id, players.name, players.nationality, players.position, players.birth_year FROM players WHERE players.nationality='Brazil' OR 'Argentina'"
 
 # YYYY-MM-DD
 # create a two years contract
@@ -20,29 +20,39 @@ database_config = {
     'database': 'football'
 }
 
+conn = mysql.connector.connect(**database_config) # init database and cursor
+cursor = conn.cursor()
+
+cursor.execute(select_brazilian_clubs_query) # select brazilian clubs
+clubs = cursor.fetchall()
+
+cursor.execute(select_brazilian_argetinian_player_query) # select all brazilian and argentinians players
+players = cursor.fetchall()
+
+# position = players[3]
+all_players = { 'GK': [], 'RB': [], 'CB': [], 'LB': [], 'DM': [], 'CM': [], 'AM': [], 'RM': [], 'LM': [], 'SS': [], 'WG': [], 'CF': [] }
+
+for player in players:
+    ''' Separate players data with positions '''
+    all_players[player[3]].append(player)
+
+
+p_contracts = [] 
+
+for club in clubs:
+    for position, players in all_players.items():
+        for _ in range(3):
+            player = all_players[position].pop()
+            id_player = player[0] 
+    
+            id_club = club[0]
+            p_contracts.append([start_date, end_date, salary, termination_fine, id_club, id_player])
+
 conn = mysql.connector.connect(**database_config)
 cursor = conn.cursor()
 
-cursor.execute(select_brazilian_clubs_query)
-clubs = cursor.fetchall()
+for p in p_contracts:
+    cursor.execute(insert_players_contract_query, p)
 
-cursor.execute(select_brazilian_argetinian_player_query)
-players = cursor.fetchall()
-
-
-for club in clubs:
-    p_contracts = []
-    for i in range(30):
-        player = players.pop()
-        id_player = player[0] 
-        id_club = club[0]
-        p_contracts.append([start_date, end_date, salary, termination_fine, id_club, id_player])
-
-    conn = mysql.connector.connect(**database_config)
-    cursor = conn.cursor()
-
-    for p in p_contracts:
-        cursor.execute(insert_players_contract_query, p)
-
-    conn.commit()
-    conn.close
+conn.commit()
+conn.close
