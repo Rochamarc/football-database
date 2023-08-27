@@ -133,7 +133,31 @@ CREATE TABLE competition_tables(
         REFERENCES divisons(id)
 );
 
+-- skills stats
+CREATE TABLE skill_stats(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    season CHAR(4) NOT NULL,
+    overall INT NOT NULL,
+    id_player INT NOT NULL,
+    FOREIGN KEY (id_player)
+        REFERENCES players(id)
+);
 
+CREATE TABLE player_season_stats(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    season CHAR(4) NOT NULL,
+    matches INT,
+    goals INT,
+    assists INT,
+    tackles INT,
+    clearances INT,
+    defenses INT,
+    points FLOAT,
+    average FLOAT,
+    id_player INT,
+    FOREIGN KEY (id_player)
+        REFERENCES players(id)
+);
 
 
 /* INSERT EXAMPLES */
