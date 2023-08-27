@@ -143,6 +143,7 @@ CREATE TABLE skill_stats(
         REFERENCES players(id)
 );
 
+-- Player season stats
 CREATE TABLE player_season_stats(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     season CHAR(4) NOT NULL,
@@ -159,6 +160,15 @@ CREATE TABLE player_season_stats(
         REFERENCES players(id)
 );
 
+-- Player value
+CREATE TABLE player_values_season(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    season CHAR(4) NOT NULL,
+    market_value INT NOT NULL,
+    id_player INT,
+    FOREIGN KEY (id_player)
+        REFERENCES players(id)
+);
 
 /* INSERT EXAMPLES */
 -- CLUBS
