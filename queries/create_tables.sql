@@ -4,6 +4,7 @@ USE football;
 
 /* CREATE TABLES */
 
+-- CONFEDERATION
 CREATE TABLE confederations (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -100,7 +101,37 @@ CREATE TABLE stadiums (
 );
 
 
--- CONFEDERATION
+-- Competition
+CREATE TABLE competitions(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE divisons(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE competition_tables(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    season CHAR(4) NOT NULL,
+    matches INT,
+    won INT,
+    draw INT,
+    lost INT,
+    goals_for INT,
+    goals_away INT,
+    goal_diff INT,
+    id_competition INT,
+    FOREIGN KEY (id_competition)
+        REFERENCES competitions(id),
+    id_club INT,
+    FOREIGN KEY (id_club)
+        REFERENCES clubs(id),
+    id_divison INT,
+    FOREIGN KEY (id_divison)
+        REFERENCES divisons(id)
+);
 
 
 
