@@ -134,6 +134,8 @@ CREATE TABLE competition_tables(
 );
 
 -- skills stats
+
+/*
 CREATE TABLE skill_stats(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     season CHAR(4) NOT NULL,
@@ -142,6 +144,7 @@ CREATE TABLE skill_stats(
     FOREIGN KEY (id_player)
         REFERENCES players(id)
 );
+*/
 
 -- Player season stats
 CREATE TABLE player_season_stats(
@@ -159,6 +162,8 @@ CREATE TABLE player_season_stats(
     FOREIGN KEY (id_player)
         REFERENCES players(id)
 );
+/* adicionar goals_conceded e clean_sheets para goleiros e defensores */
+
 
 -- Player value
 CREATE TABLE player_values_season(
