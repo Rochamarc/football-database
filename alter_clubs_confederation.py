@@ -1,6 +1,7 @@
 import mysql.connector
 
-query = 'SELECT id FROM confederations WHERE continent={}'
+select_query = "SELECT id FROM confederations WHERE continent=%s"
+update_query = "UPDATE clubs SET id_confederation=%s WHERE country=%s"
 
 database_config = {
     'user': 'tournament_user',
@@ -17,7 +18,7 @@ def get_confederation_id(continent: str) -> int:
     cursor = conn.cursor() 
 
     
-    cursor.execute("SELECT id FROM confederations WHERE continent='{}'".format(continent))
+    cursor.execute(select_query, [continent])
     re = cursor.fetchall()
     
     conn.close()
@@ -34,7 +35,7 @@ def alter_confederations(continent: str, countries: list) -> None:
     id_confederation = get_confederation_id(continent)
 
     for country in countries:
-        cursor.execute("UPDATE clubs SET id_confederation={} WHERE country='{}'".format(id_confederation, country))
+        cursor.execute(update_query, [id_confederation, country])
 
     conn.commit()
     conn.close()
