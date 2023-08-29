@@ -11,7 +11,6 @@ CREATE TABLE confederations (
     continent VARCHAR(100) NOT NULL
 );
 
-
 -- CLUBS
 CREATE TABLE clubs (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -19,11 +18,19 @@ CREATE TABLE clubs (
     country VARCHAR(100) NOT NULL,
     state VARCHAR(100),
     class CHAR(1),
-    total_budget INT,
-    salary_budget INT,
     id_confederation INT,
     FOREIGN KEY (id_confederation)
     REFERENCES confederations(id)
+);
+
+CREATE TABLE club_budgets(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    season CHAR(4) NOT NULL,
+    transfer_budget INT NOT NULL,
+    salary_budget INT NOT NULL,
+    id_club INT NOT NULL,
+    FOREIGN KEY (id_club)
+        REFERENCES clubs(id)
 );
 
 -- PLAYERS
@@ -39,6 +46,7 @@ CREATE TABLE players (
     retired CHAR(1)
 );
 
+-- PLAYER SKILL TABLE
 CREATE TABLE players_overall (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     season VARCHAR(5) NOT NULL,
@@ -62,6 +70,35 @@ CREATE TABLE players_contract(
     id_player INT,
     FOREIGN KEY (id_player) 
     REFERENCES players(id)  
+);
+
+-- Player season stats
+CREATE TABLE player_season_stats(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    season CHAR(4) NOT NULL,
+    matches INT,
+    goals INT,
+    assists INT,
+    tackles INT,
+    clearances INT,
+    defenses INT,
+    goals_conceded INT,
+    clean_sheets INT,
+    points FLOAT,
+    average FLOAT,
+    id_player INT,
+    FOREIGN KEY (id_player)
+        REFERENCES players(id)
+);
+
+-- Player value
+CREATE TABLE player_values_season(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    season CHAR(4) NOT NULL,
+    market_value INT NOT NULL,
+    id_player INT,
+    FOREIGN KEY (id_player)
+        REFERENCES players(id)
 );
 
 -- COACHES
@@ -131,50 +168,6 @@ CREATE TABLE competition_tables(
     id_divison INT,
     FOREIGN KEY (id_divison)
         REFERENCES divisons(id)
-);
-
--- skills stats
-
-/*
-CREATE TABLE skill_stats(
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    season CHAR(4) NOT NULL,
-    overall INT NOT NULL,
-    id_player INT NOT NULL,
-    FOREIGN KEY (id_player)
-        REFERENCES players(id)
-);
-*/
-
--- Player season stats
-CREATE TABLE player_season_stats(
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    season CHAR(4) NOT NULL,
-    matches INT,
-    goals INT,
-    assists INT,
-    tackles INT,
-    clearances INT,
-    defenses INT,
-    goals_conceded INT,
-    clean_sheets INT,
-    points FLOAT,
-    average FLOAT,
-    id_player INT,
-    FOREIGN KEY (id_player)
-        REFERENCES players(id)
-);
-/* adicionar goals_conceded e clean_sheets para goleiros e defensores */
-
-
--- Player value
-CREATE TABLE player_values_season(
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    season CHAR(4) NOT NULL,
-    market_value INT NOT NULL,
-    id_player INT,
-    FOREIGN KEY (id_player)
-        REFERENCES players(id)
 );
 
 CREATE TABLE home_game_stats(
