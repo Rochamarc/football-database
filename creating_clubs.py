@@ -36,8 +36,7 @@ if __name__ == "__main__":
                 
                 for d in dd: 
                     club = d[0]
-                    coeff = randint(1,100_000)
                     c_class = choice(['A','B','C','D','E','F'])
-                    club_data.append([club, country, coeff, c_class])
+                    club_data.append([club, country, c_class])
 
     insert_clubs_db(club_data) # inserting clubs

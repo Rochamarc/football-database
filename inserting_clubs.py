@@ -1,6 +1,6 @@
 import mysql.connector
 
-query = 'INSERT INTO clubs (name, country, coeff, class) VALUES (%s,%s,%s,%s);'
+query = 'INSERT INTO clubs (name, country, class) VALUES (%s,%s,%s);'
 
 database_config = {
     'user': 'tournament_user',
