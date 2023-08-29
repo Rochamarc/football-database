@@ -156,6 +156,8 @@ CREATE TABLE player_season_stats(
     tackles INT,
     clearances INT,
     defenses INT,
+    goals_conceded INT,
+    clean_sheets INT,
     points FLOAT,
     average FLOAT,
     id_player INT,
