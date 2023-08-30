@@ -3,7 +3,7 @@
 
 CREATE TABLE seasons(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    season VARCHAR(5)) NOT NULL
+    season VARCHAR(5) NOT NULL
 );
 
 -- CONFEDERATION
@@ -13,8 +13,8 @@ CREATE TABLE international_confederations(
     continent VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE nationas_confederations(
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,]
+CREATE TABLE national_confederations(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     country VARCHAR(100) NOT NULL
 );
