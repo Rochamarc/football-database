@@ -1,0 +1,32 @@
+-- Independent and FK tables
+
+
+CREATE TABLE seasons(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    season VARCHAR(5)) NOT NULL
+);
+
+-- CONFEDERATION
+CREATE TABLE international_confederations(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    continent VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE nationas_confederations(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,]
+    name VARCHAR(100) NOT NULL,
+    country VARCHAR(100) NOT NULL
+);
+
+/* 
+FOR FUTURE CHANGES 
+
+INTERNATIONAL_CONFEDERATIONS -> CONMEBOL, UEFA, ...
+NATIONAL_CONFEDERATIONS -> AFA, CBF, ...
+
+DIFF 
+|INTERNATIONAL | NATIONAL |
+|continent     | country  |
+
+*/
