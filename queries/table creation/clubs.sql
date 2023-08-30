@@ -5,9 +5,12 @@ CREATE TABLE clubs (
     country VARCHAR(100) NOT NULL,
     state VARCHAR(100),
     class CHAR(1),
-    id_confederation INT,
-    FOREIGN KEY (id_confederation)
-    REFERENCES confederations(id)
+    id_international_confederation INT,
+    FOREIGN KEY (id_international_confederation)
+        REFERENCES international_confederations(id),
+    id_national_confederation INT,
+    FOREIGN KEY (id_national_confederation)
+        REFERENCES national_confederations(id)
 );
 
 /* season CHAR(4) NOT NULL, */ -- CHANGE TO FK
@@ -19,7 +22,7 @@ CREATE TABLE club_budgets(
     salary_budget INT NOT NULL,
     id_club INT NOT NULL,
     FOREIGN KEY (id_club)
-        REFERENCES clubs(id)
+        REFERENCES clubs(id),
     id_season INT NOT NULL,
     FOREIGN KEY (id_season)
         REFERENCES seasons(id)
