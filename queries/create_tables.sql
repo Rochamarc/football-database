@@ -4,12 +4,35 @@ USE football;
 
 /* CREATE TABLES */
 
+/* 
+JUST AN EXPERIMENT 
+now every time we have a season inside a table, it will be
+an foreign key 
+*/
+
+CREATE TABLE season(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    season VARCHAR(5)) NOT NULL
+);
+
 -- CONFEDERATION
 CREATE TABLE confederations (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     continent VARCHAR(100) NOT NULL
 );
+
+/* 
+FOR FUTURE CHANGES 
+
+INTERNATIONAL_CONFEDERATIONS -> CONMEBOL, UEFA, ...
+NATIONAL_CONFEDERATIONS -> AFA, CBF, ...
+
+DIFF 
+|INTERNATIONAL | NATIONAL |
+|continent     | country  |
+
+*/
 
 -- CLUBS
 CREATE TABLE clubs (
@@ -25,7 +48,7 @@ CREATE TABLE clubs (
 
 CREATE TABLE club_budgets(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    season CHAR(4) NOT NULL,
+    season CHAR(4) NOT NULL, -- CHANGE TO FK
     transfer_budget INT NOT NULL,
     salary_budget INT NOT NULL,
     id_club INT NOT NULL,
@@ -49,7 +72,7 @@ CREATE TABLE players (
 -- PLAYER SKILL TABLE
 CREATE TABLE players_overall (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    season VARCHAR(5) NOT NULL,
+    season VARCHAR(5) NOT NULL, -- CHANGE TO FK
     overall INT NOT NULL,
     id_player INT,
     FOREIGN KEY(id_player)
@@ -57,10 +80,11 @@ CREATE TABLE players_overall (
 );
 
 -- PLAYERS_CONTRACT
+/* NOW THE CONTRACT ONLY RECEIVE THE YEAR */
 CREATE TABLE players_contract(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    start_date DATE,
-    end_date DATE,
+    start_date CHAR(4),
+    end_date CHAR(4),
     value INT,
     salary INT NOT NULL,
     termination_fine INT,
@@ -73,9 +97,9 @@ CREATE TABLE players_contract(
 );
 
 -- Player season stats
-CREATE TABLE player_season_stats(
+CREATE TABLE player_stats(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    season CHAR(4) NOT NULL,
+    season CHAR(4) NOT NULL, -- CHANGE TO FK
     matches INT,
     goals INT,
     assists INT,
@@ -92,9 +116,9 @@ CREATE TABLE player_season_stats(
 );
 
 -- Player value
-CREATE TABLE player_values_season(
+CREATE TABLE player_values(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    season CHAR(4) NOT NULL,
+    season CHAR(4) NOT NULL, -- CHANGE TO FK
     market_value INT NOT NULL,
     id_player INT,
     FOREIGN KEY (id_player)
@@ -114,6 +138,8 @@ CREATE TABLE coaches (
 -- COACHES_CONTRACT
 CREATE TABLE coaches_contract(
     id INT AUTO_INCREMENT PRIMARY KEY,
+    start_date CHAR(4),
+    end_date CHAR(4),
     value INT,
     salary INT NOT NULL,
     termination_fine INT,
@@ -151,7 +177,7 @@ CREATE TABLE divisons(
 
 CREATE TABLE competition_tables(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    season CHAR(4) NOT NULL,
+    season CHAR(4) NOT NULL, -- CHANGE TO FK
     matches INT,
     won INT,
     draw INT,
@@ -197,7 +223,7 @@ CREATE TABLE away_game_stats(
 -- Games
 CREATE TABLE games(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    season CHAR(4) NOT NULL,
+    season CHAR(4) NOT NULL, -- CHANGE TO FK
     hour CHAR(5),
     score VARCHAR(5),
     id_competition INT,
