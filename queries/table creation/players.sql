@@ -18,7 +18,7 @@ CREATE TABLE players_overall (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     overall INT NOT NULL,
     id_season INT,
-    FOREIGN KEY id_season
+    FOREIGN KEY (id_season)
         REFERENCES seasons(id),
     id_player INT,
     FOREIGN KEY(id_player)
@@ -36,10 +36,10 @@ CREATE TABLE players_contract(
     termination_fine INT,
     id_club INT,
     FOREIGN KEY (id_club) 
-    REFERENCES clubs(id),
+        REFERENCES clubs(id),
     id_player INT,
     FOREIGN KEY (id_player) 
-    REFERENCES players(id)  
+        REFERENCES players(id)  
 );
 
 -- Player season stats
@@ -56,7 +56,7 @@ CREATE TABLE player_stats(
     points FLOAT,
     average FLOAT,
     id_season INT,
-    FOREIGN KEY id_season
+    FOREIGN KEY (id_season)
         REFERENCES seasons(id),
     id_player INT,
     FOREIGN KEY (id_player)
@@ -68,7 +68,7 @@ CREATE TABLE player_values(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     market_value INT NOT NULL,
     id_season INT,
-    FOREIGN KEY id_season
+    FOREIGN KEY (id_season)
         REFERENCES seasons(id),
     id_player INT,
     FOREIGN KEY (id_player)
