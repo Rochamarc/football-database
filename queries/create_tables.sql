@@ -10,7 +10,7 @@ now every time we have a season inside a table, it will be
 an foreign key 
 */
 
-CREATE TABLE season(
+CREATE TABLE seasons(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     season VARCHAR(5)) NOT NULL
 );
