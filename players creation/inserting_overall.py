@@ -33,7 +33,7 @@ def insert_overall(players_id: list) -> None:
 
     for id in players_id:
         overall = randint(50,90)
-        query = f'INSERT INTO players_overall VALUES(NULL, 2023, {overall}, {id})'
+        query = f'INSERT INTO players_overall VALUES(NULL, {overall}, 1, {id})'
         cursor.execute(query)
     
     conn.commit()

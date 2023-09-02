@@ -6,8 +6,8 @@ select_brazilian_argetinian_player_query = "SELECT players.id, players.name, pla
 
 # YYYY-MM-DD
 # create a two years contract
-start_date = '2023-01-01'
-end_date = '2024-01-01'
+start_date = '2023'
+end_date = '2024'
 salary = 25_000
 termination_fine = 1_000_000
 
