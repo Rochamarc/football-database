@@ -1,10 +1,10 @@
 import mysql.connector 
 import pandas as pd 
 
-
-query = "SELECT clubs.name, clubs.country FROM clubs WHERE clubs.country='Brazil'"
-query = 'SELECT clubs.name, clubs.country, clubs.class, confederations.name FROM clubs INNER JOIN confederations  ON id_confederation = confederations.id'
-
+query = '''SELECT clubs.name, clubs.country, clubs.class, international_confederations.name 
+FROM clubs INNER JOIN international_confederations 
+ON id_international_confederation = international_confederations.id
+'''
 
 database_config = {
     'user': 'tournament_user',
