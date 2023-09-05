@@ -34,7 +34,7 @@ conn.close()
 insert_player_query = "INSERT INTO players(name, nationality, position, height, weight, foot, birth_year, retired) VALUES(%s, %s, %s, %s, %s, %s, %s, NULL)"
 
 players = []
-for _ in range(100000):
+for _ in range(150000):
     name = format_name(first_names, last_names)
     nationality = choice(['Spain', 'Argentina', 'Uruguay', 'Chile', 'Paraguay', 'Colombia', 'Mexico'])
     birth_year = get_player_age()
