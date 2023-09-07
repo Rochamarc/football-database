@@ -1,6 +1,6 @@
 import os 
 
-from inserting_clubs import insert_clubs_db
+from clubs_controller import insert_clubs_db
 
 from random import choice, randint 
 
