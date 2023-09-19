@@ -36,7 +36,7 @@ insert_player_query = "INSERT INTO players(name, nationality, position, height, 
 players = []
 for _ in range(150000):
     name = format_name(first_names, last_names)
-    nationality = choice(['United States', 'Germany', 'England', 'Walles'])
+    nationality = choice(['United States', 'Germany', 'England', 'Wales'])
     birth_year = get_player_age()
     position = get_player_position()
     height = get_player_height(position)
