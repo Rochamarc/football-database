@@ -6,8 +6,8 @@ import mysql.connector
 
 from player_creation import *
 
-first_name_query = "SELECT first_name.value FROM first_name INNER JOIN region ON region_id = id_region WHERE region.language='Portuguese';"
-last_name_query = "SELECT last_name.value FROM last_name INNER JOIN region ON region_id = id_region WHERE region.language='Portuguese';"
+first_name_query = "SELECT first_names.value FROM first_names INNER JOIN regions ON id_region = id_region WHERE regions.language='Portuguese';"
+last_name_query = "SELECT last_names.value FROM last_names INNER JOIN regions ON id_region = id_region WHERE regions.language='Portuguese';"
 
 database_config = {
     'user': 'tournament_user',
