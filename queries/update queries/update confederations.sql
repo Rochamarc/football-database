@@ -75,16 +75,20 @@ IN ('cameroon','benin','algeria','ghana','congo','burundi','botswana','democrati
 'central african republic','equatorial guinea','cape verde','eswatini','ethiopia','guinea','gambia');
 
 /* */
-SELECT clubs.id, clubs.name, clubs.country, 
-clubs.class, international_confederations.name, 
-international_confederations.continent
+SELECT  clubs.id, 
+        clubs.name, 
+        clubs.country, 
+        international_confederations.name, 
+        international_confederations.continent
 FROM clubs 
 INNER JOIN international_confederations 
     ON clubs.id_international_confederation = international_confederations.id;
 
-SELECT clubs.id, clubs.name, clubs.country, 
-clubs.class, international_confederations.name, 
-international_confederations.continent
+SELECT  clubs.id, 
+        clubs.name, 
+        clubs.country, 
+        international_confederations.name, 
+        international_confederations.continent
 FROM clubs 
 INNER JOIN international_confederations 
     ON clubs.id_international_confederation = international_confederations.id
