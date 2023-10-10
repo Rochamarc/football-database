@@ -1,11 +1,12 @@
 SELECT  players.name Nome,
         players.nationality Nacionalidade,
         players.birth_year Nascimento,
-        IFNULL(clubs.name, "------------") Clube
+        clubs.name Clube
 FROM players 
-LEFT JOIN players_contract
+INNER JOIN players_contract
+INNER JOIN clubs
     ON players.id = players_contract.id_player 
-LEFT JOIN clubs
-    ON clubs.id = players_contract.id_club;
+    AND clubs.id = players_contract.id_club;
+
     
 /* INTO OUTFILE '/var/lib/mysql-files/name.txt' */
