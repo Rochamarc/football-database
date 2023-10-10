@@ -1,6 +1,6 @@
 import mysql.connector
 
-query = 'INSERT INTO clubs (name, country, class) VALUES (%s,%s,%s);'
+query = 'INSERT INTO clubs (name, country) VALUES (%s,%s);'
 
 database_config = {
     'user': 'tournament_user',
@@ -17,7 +17,7 @@ def insert_clubs_db(clubs: list) -> None:
     cursor = conn.cursor()
 
     for club in clubs:
-        cursor.execute(query, club)
+        cursor.execute('INSERT INTO clubs (name, country) VALUES (%s,%s);', club)
 
     conn.commit()
     conn.close()
