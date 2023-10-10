@@ -16,7 +16,6 @@ CREATE TABLE clubs (
     name VARCHAR(100) NOT NULL,
     country VARCHAR(100) NOT NULL,
     state VARCHAR(100),
-    class CHAR(1),
     id_international_confederation INT,
     id_national_confederation INT
 );
